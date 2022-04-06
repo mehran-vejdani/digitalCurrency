@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 //components
 import Loader from "../loader/Loader";
+import Coin from "../coins/Coin";
 //API
 import { getCoin } from "../../services/api";
 const Landing = () => {
@@ -19,7 +20,15 @@ const Landing = () => {
       {coins.length ? (
         <div>
           {coins.map((coin) => (
-            <p key={coin.id}>{coin.name}</p>
+            <Coin
+              key={coin.id}
+              name={coin.name}
+              image={coin.image}
+              symbol={coin.symbol}
+              price={coin.current_price}
+              marketCap={coin.market_cap}
+              priceChange={coin.market_cap_change_percentage_24h}
+            />
           ))}
         </div>
       ) : (
